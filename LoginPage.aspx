@@ -21,9 +21,9 @@
                 </div>
 
                 <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
-
+                
                 <asp:Button ID="btnLogin" runat="server" Text="LOGIN" OnClick="btnLogin_Click"/>
-                <br />
+                
                 Đăng ký tài khoản <asp:LinkButton ID="lbtnSignUp" runat="server" OnClick="lbtnSignUp_Click">SignUp</asp:LinkButton>
             </div>
         </div>
