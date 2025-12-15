@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="CarRental.csproj" Id="1280803d-9a05-4c44-a8d4-2a67fd758ef0" />
+  <Project Path="DataAccess/DataAccess.csproj" Id="8ab7c9dd-baeb-4257-97aa-d78381f51969" />
+</Solution>
