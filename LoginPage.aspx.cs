@@ -50,11 +50,13 @@ namespace CarRental
                 }
                 else if (account.Permission == 2)
                 {
+                    Session["Username"] = txtUsername.Text;
                     Response.Redirect("StaffDashboard.aspx");
                 }
                 else if (account.Permission == 3)
                 {
-                    Response.Redirect("CustomerDashboard.aspx");
+                    Session["Username"] = txtUsername.Text;
+                    Response.Redirect("VehicleList.aspx");
                 }
                 else
                 {

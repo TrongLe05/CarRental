@@ -1,0 +1,37 @@
+﻿h2 {
+    color: #333;
+    border-bottom: 2px solid #7494ec;
+    padding-bottom: 10px;
+}
+.input-box {
+    padding: 5px;
+    font-size: 15px;
+}
+
+.btn-save {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    margin: 10px 0;
+    padding: 6px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-save:not(:disabled):hover {
+    background-color: #1e40af;
+}
+
+
+.btn-save:disabled {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    margin: 10px 0;
+    padding: 6px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: not-allowed;
+    opacity: 0.6;
+}

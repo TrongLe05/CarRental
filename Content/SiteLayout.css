@@ -1,0 +1,141 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: inherit;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.site-header {
+    background: #333;
+    color: white;
+    padding: 0 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.logo i {
+    margin-right: 10px;
+}
+
+.logo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.logo a:hover {
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+     color: white;
+}
+
+/* Account */
+.account {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+}
+
+.btn-logout {
+    background-color: #ef4444;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-logout:hover {
+    background-color: #dc2626;
+}
+
+.account {
+    position: relative;
+}
+
+.account-dropdown {
+    position: relative;
+}
+
+.account-trigger {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.account-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: #fff;
+    min-width: 180px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 6px;
+    display: none;
+    z-index: 999;
+}
+
+.account-menu a,
+.account-menu .logout {
+    display: block;
+    padding: 10px 14px;
+    text-decoration: none;
+    color: #333;
+}
+
+.account-menu a:hover,
+.account-menu .logout:hover {
+    background: #f5f5f5;
+}
+
+.account-dropdown:hover .account-menu {
+    display: block;
+}
+
+.main-site-content {
+    margin-top: 70px;
+    flex: 1;
+    padding: 0;
+}

@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data_CarRental.cs">
+      <DependentUpon>Data_CarRental.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Data_CarRental.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

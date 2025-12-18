@@ -1,179 +1,304 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CustomerDashboard.aspx.cs" Inherits="CarRental.CustomerDashboard" %>
+﻿﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteStaff.Master" AutoEventWireup="true" CodeBehind="StaffDashboard.aspx.cs" Inherits="CarRental.StaffDashboard" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-
+<%-- Phần này chứa CSS riêng cho trang Quản lý xe --%>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-        .image-btn {
-            width: 100%;
-            height: 150px;
-            object-fit: contain;
-            cursor: pointer;
-            border: none;
-            background: white;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        .vehicle-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+        /* Container riêng của trang này */
+        .page-container {
+            background: #fff;
             padding: 20px;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .vehicle-item {
-            width: 280px;
-            background: white;
-            border: 1px solid #e0e0e0;
             border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
-        .vehicle-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            margin-bottom: 10px;
-        }
-
-        .vehicle-name {
-            font-size: 20px;
+        h2 {
             color: #333;
-            margin: -10px 0 -10px;
-            min-height: 40px;
+            border-bottom: 2px solid #7494ec;
+            padding-bottom: 10px;
+            margin-top: 0;
         }
 
-        .vehicle-seating {
-            margin: 0 0 10px
-
+        /* Form thêm mới */
+        .add-form {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #eef2ff;
+            border-radius: 8px;
         }
 
-        .vehicle-price {
-            font-size: 16px;
-            color: #ef4444;
-            font-weight: bold;
-        }
-
-        /* Header */
-        .site-header {
-            background-color: #333;
-            height: 70px;
+        .input-group {
             display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
             align-items: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            margin-top: 10px;
         }
 
-        .header-container {
-            width: 90%;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .form-control {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
 
-        /* Logo */
-        .logo a {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        /* Menu */
-        .nav-menu a {
-            margin: 0 15px;
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .nav-menu a:hover {
-            color: #ffffff;
-        }
-
-        /* Account */
-        .account {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #ffffff;
-        }
-
-        .btn-logout {
-            background-color: #ef4444;
-            border: none;
-            padding: 6px 12px;
+        .btn-add {
+            background: #28a745;
             color: white;
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* Bộ lọc */
+        .filter-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-search {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 15px;
             cursor: pointer;
             border-radius: 4px;
         }
 
-        .btn-logout:hover {
-            background-color: #dc2626;
+        /* GridView */
+        .mydatagrid {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
         }
 
+            .mydatagrid th {
+                background-color: #7494ec;
+                color: white;
+                padding: 10px;
+                text-align: left;
+            }
+
+            .mydatagrid td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: middle;
+            }
+
+            .mydatagrid tr:hover {
+                background-color: #f1f1f1;
+            }
+
+        .car-img {
+            width: 80px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        /* Phân trang */
+        .paging td table {
+            margin: 10px auto;
+        }
+
+        .paging td span {
+            background: #7494ec;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 2px;
+        }
+
+        .paging td a {
+            background: #fff;
+            color: #333;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 2px;
+            text-decoration: none;
+        }
+
+        /* Action Buttons */
+        .btn-action {
+            margin-right: 5px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 16px;
+        }
+
+        .edit-btn {
+            color: #ffc107;
+        }
+
+        .delete-btn {
+            color: #dc3545;
+        }
+
+        .save-btn {
+            color: #28a745;
+        }
+
+        .cancel-btn {
+            color: #6c757d;
+        }
+
+        /* Nút Đăng xe */
+        .btn-post {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            border: 1px solid #007bff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+
+            .btn-post:hover {
+                background: #007bff;
+                color: white;
+            }
+
+            .btn-post.disabled {
+                color: #ccc;
+                border-color: #ccc;
+                pointer-events: none;
+                cursor: not-allowed;
+            }
+
+        /* Trạng thái */
+        .status-rented {
+            color: red;
+            font-weight: bold;
+        }
+
+        .status-available {
+            color: green;
+            font-weight: bold;
+        }
     </style>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <header class="site-header">
-            <div class="header-container">
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="Home.aspx">Cho thuê xe 3 con cá</a>
-                </div>
+</asp:Content>
 
-                <!-- Menu -->
-                <nav class="nav-menu">
-                    <a href="Home.aspx">Trang chủ</a>
-                    <a href="Cars.aspx">Xe</a>
-                    <a href="Booking.aspx">Đặt xe</a>
-                    <a href="Contact.aspx">Liên hệ</a>
-                </nav>
+<%-- Phần này chứa nội dung chính sẽ hiển thị bên phải Sidebar --%>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-                <!-- Account -->
-                <div class="account">
-                    <asp:Label ID="lblUsername" runat="server" Text="Xin chào"></asp:Label>
-                    <asp:Button ID="btnLogout" runat="server" Text="Đăng xuất" CssClass="btn-logout" />
-                </div>
+    <div class="page-container">
+        <h2><i class="fa-solid fa-car-rear"></i>Quản lý thông tin phương tiện</h2>
+        <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
+
+        <div class="add-form">
+            <h4>Thêm phương tiện mới:</h4>
+            <div class="input-group">
+                <asp:TextBox ID="txtNewLicensePlate" runat="server" CssClass="form-control" Placeholder="Biển số"></asp:TextBox>
+                <asp:TextBox ID="txtNewNameVehicle" runat="server" CssClass="form-control" Placeholder="Tên xe"></asp:TextBox>
+                <asp:TextBox ID="txtNewSeating" runat="server" CssClass="form-control" TextMode="Number" Placeholder="Số chỗ" Width="80px"></asp:TextBox>
+                <asp:TextBox ID="txtNewPrice" runat="server" CssClass="form-control" Placeholder="Giá thuê" TextMode="Number"></asp:TextBox>
+
+                <asp:DropDownList ID="ddlFuelType" runat="server" CssClass="form-control">
+                    <asp:ListItem Value="0">-- Loại nhiên liệu --</asp:ListItem>
+                    <asp:ListItem Value="Xăng">Xăng</asp:ListItem>
+                    <asp:ListItem Value="Dầu">Dầu</asp:ListItem>
+                    <asp:ListItem Value="Điện">Điện</asp:ListItem>
+                </asp:DropDownList>
+
+                <asp:FileUpload ID="fuNewImage" runat="server" CssClass="form-control" />
             </div>
-        </header>
-        <h1>Customer Dashboard</h1>
-        <div class="vehicle-container">
-            <asp:DataList ID="DataList1" runat="server" RepeatColumns="4"><ItemTemplate>
-                    <div class="vehicle-item">
-                        <asp:ImageButton ID="ImageButton1" CssClass="image-btn" runat="server" 
-                            ImageUrl='<%# "~/Image/Vehicle/" + Eval("Image") %>' />
-                        <div class="vehicle-name">
-                            <asp:HyperLink ID="HyperLink1" runat="server" 
-                                Text='<%# Eval("NameVehicle") %>'></asp:HyperLink>
-                        </div>
-                        <div class="vehicle-seating">
-                            <asp:Label ID="lblSoCho" runat="server" Text='<%# "Số chỗ ngồi: " + Eval("SeatingCapacity") %>'></asp:Label>
-                        </div>
-                        <div class="vehicle-price">
-                            <asp:Label ID="lblGia" runat="server" DataFormatString="{0:0,000}"
-                                Text='<%#  Eval("Price", "{0:N0} VNĐ/ngày")  %>'></asp:Label>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:DataList>
+            <asp:Button ID="btnAdd" runat="server" Text="Thêm xe" CssClass="btn-add" OnClick="btnAdd_Click" />
         </div>
-    </form>
-</body>
-</html>
+
+        <div class="filter-section">
+            <strong><i class="fa-solid fa-filter"></i>Tìm kiếm & Lọc:</strong>
+            <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" Placeholder="Tìm biển số hoặc tên xe..."></asp:TextBox>
+            <asp:DropDownList ID="ddlFilterFuel" runat="server" CssClass="form-control">
+                <asp:ListItem Value="All">-- Tất cả nhiên liệu --</asp:ListItem>
+                <asp:ListItem Value="Xăng">Xăng</asp:ListItem>
+                <asp:ListItem Value="Dầu">Dầu</asp:ListItem>
+                <asp:ListItem Value="Điện">Điện</asp:ListItem>
+            </asp:DropDownList>
+            <asp:DropDownList ID="ddlFilterStatus" runat="server" CssClass="form-control">
+                <asp:ListItem Value="-1">-- Tất cả trạng thái --</asp:ListItem>
+                <asp:ListItem Value="0">Chưa cho thuê</asp:ListItem>
+                <asp:ListItem Value="1">Đã cho thuê</asp:ListItem>
+            </asp:DropDownList>
+            <asp:Button ID="btnSearch" runat="server" Text="Tìm kiếm" CssClass="btn-search" OnClick="btnSearch_Click" />
+        </div>
+
+        <asp:GridView ID="gvStaff" runat="server" AutoGenerateColumns="False"
+            CssClass="mydatagrid"
+            DataKeyNames="LicensePlate"
+            AllowPaging="True" PageSize="10"
+            OnPageIndexChanging="gvStaff_PageIndexChanging"
+            OnRowCancelingEdit="gvStaff_RowCancelingEdit"
+            OnRowEditing="gvStaff_RowEditing"
+            OnRowUpdating="gvStaff_RowUpdating"
+            OnRowDeleting="gvStaff_RowDeleting"
+            OnRowCommand="gvStaff_RowCommand">
+
+            <PagerStyle CssClass="paging" HorizontalAlign="Center" />
+
+            <Columns>
+                <%-- Cột Ảnh Xe --%>
+                <asp:TemplateField HeaderText="Ảnh">
+                    <ItemTemplate>
+                        <asp:Image ID="imgCar" runat="server" CssClass="car-img" ImageUrl='<%# Eval("Image") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:Image ID="imgCarEdit" runat="server" CssClass="car-img" ImageUrl='<%# Eval("Image") %>' />
+                        <br />
+                        <asp:FileUpload ID="fuEditImage" runat="server" Width="180px" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+
+                <asp:BoundField DataField="LicensePlate" HeaderText="Biển số" ReadOnly="True" />
+                <asp:BoundField DataField="NameVehicle" HeaderText="Tên xe" />
+                <asp:BoundField DataField="SeatingCapacity" HeaderText="Số chỗ" />
+                <asp:BoundField DataField="FuelType" HeaderText="Nhiên liệu" />
+                <asp:BoundField DataField="Price" HeaderText="Giá/Ngày" DataFormatString="{0:0,000}" />
+
+                <asp:TemplateField HeaderText="Trạng thái">
+                    <ItemTemplate>
+                        <asp:Label ID="lblStatus" runat="server"
+                            Text='<%# (bool)Eval("VehicleStatus") ? "Đã cho thuê" : "Chưa cho thuê" %>'
+                            CssClass='<%# (bool)Eval("VehicleStatus") ? "status-rented" : "status-available" %>'>
+                        </asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:CheckBox ID="chkTrangThai" runat="server"
+                            Checked='<%# Bind("VehicleStatus") %>' Text="Đã thuê" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+
+                <%--   <asp:TemplateField HeaderText="Đăng xe">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnPost" runat="server" 
+                            CommandName="PostVehicle" 
+                            CommandArgument='<%# Eval("LicensePlate") %>'
+                            CssClass='<%# (bool)Eval("VehicleStatus") ? "btn-post disabled" : "btn-post" %>'>
+                            <i class="fa-solid fa-share-from-square"></i> Đăng
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField> --%>
+
+                <asp:TemplateField HeaderText="Thao tác" ItemStyle-Width="100px">
+                    <ItemTemplate>
+                        <%--  <asp:LinkButton ID="btnEdit" runat="server" CommandName="Edit" CssClass="btn-action edit-btn"><i class="fa-solid fa-pen-to-square"></i></asp:LinkButton> --%>
+                        <asp:LinkButton ID="btnDelete" runat="server" CommandName="Delete" CssClass="btn-action delete-btn" OnClientClick="return confirm('Bạn có chắc muốn xóa?');"><i class="fa-solid fa-trash"></i></asp:LinkButton>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:LinkButton ID="btnUpdate" runat="server" CommandName="Update" CssClass="btn-action save-btn"><i class="fa-solid fa-check"></i></asp:LinkButton>
+                        <asp:LinkButton ID="btnCancel" runat="server" CommandName="Cancel" CssClass="btn-action cancel-btn"><i class="fa-solid fa-xmark"></i></asp:LinkButton>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
+
+</asp:Content>

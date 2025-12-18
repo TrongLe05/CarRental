@@ -10,6 +10,19 @@
       <Association Name="Account_Staff" Member="Staffs" ThisKey="Username" OtherKey="Username" Type="Staff" />
     </Type>
   </Table>
+  <Table Name="dbo.Vehicle" Member="Vehicles">
+    <Type Name="Vehicle">
+      <Column Name="VehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LicensePlate" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="NameVehicle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SeatingCapacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FuelType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VehicleStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Image" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Vehicle_Order" Member="Orders" ThisKey="VehicleID" OtherKey="VehicleID" Type="Order" />
+    </Type>
+  </Table>
   <Table Name="dbo.Customer" Member="Customers">
     <Type Name="Customer">
       <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -35,8 +48,8 @@
       <Column Name="TotalPrice" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="OrderStatus" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="Customer_Order" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
-      <Association Name="Staff_Order" Member="Staff" ThisKey="StaffID" OtherKey="StaffID" Type="Staff" IsForeignKey="true" />
       <Association Name="Vehicle_Order" Member="Vehicle" ThisKey="VehicleID" OtherKey="VehicleID" Type="Vehicle" IsForeignKey="true" />
+      <Association Name="Staff_Order" Member="Staff" ThisKey="StaffID" OtherKey="StaffID" Type="Staff" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Staff" Member="Staffs">
@@ -47,19 +60,6 @@
       <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Association Name="Staff_Order" Member="Orders" ThisKey="StaffID" OtherKey="StaffID" Type="Order" />
       <Association Name="Account_Staff" Member="Account" ThisKey="Username" OtherKey="Username" Type="Account" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Vehicle" Member="Vehicles">
-    <Type Name="Vehicle">
-      <Column Name="VehicleID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="LicensePlate" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="NameVehicle" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="SeatingCapacity" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FuelType" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Column Name="Price" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="VehicleStatus" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="Image" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Association Name="Vehicle_Order" Member="Orders" ThisKey="VehicleID" OtherKey="VehicleID" Type="Order" />
     </Type>
   </Table>
 </Database>

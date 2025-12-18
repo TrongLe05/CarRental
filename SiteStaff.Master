@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteStaff.master.cs" Inherits="CarRental.SiteStaff" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="/Content/SiteStaffStyle.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="sidebar">
+            <div class="user-panel">
+                <i class="fa-solid fa-circle-user user-avatar"></i>
+
+                <asp:Label ID="lblUsername" runat="server" CssClass="user-name" Text="Admin"></asp:Label>
+
+                <asp:Label ID="lblPosition" runat="server" CssClass="user-role" Text="Chức vụ"></asp:Label>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="CustomerDashboard.aspx"><i class="fa-solid fa-house"></i>Trang chủ</a>
+                </li>
+
+                <li>
+                    <a href="StaffDashboard.aspx"><i class="fa-solid fa-car"></i>Quản lý xe</a>
+                </li>
+
+                <li>
+                    <a href="OrderManagement.aspx"><i class="fa-solid fa-file-invoice-dollar"></i>Quản lý đơn</a>
+                </li>
+
+                <li>
+                    <a href="Statistics.aspx"><i class="fa-solid fa-chart-pie"></i>Thống kê</a>
+                </li>
+            </ul>
+
+            <div class="logout-section">
+                <asp:Button ID="btnLogout" runat="server" Text="Đăng xuất" CssClass="btn-logout" OnClick="btnLogout_Click" />
+            </div>
+        </div>
+
+        <div class="main-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+</body>
+</html>

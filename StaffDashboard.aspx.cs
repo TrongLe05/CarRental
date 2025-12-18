@@ -15,10 +15,10 @@ namespace CarRental
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                LoadData();
-            }
+            //if (!IsPostBack)
+            //{
+            LoadData();
+            //}
         }
 
         // --- HÀM LOAD DỮ LIỆU ĐA NĂNG (TÌM KIẾM + LỌC) ---
@@ -96,10 +96,10 @@ namespace CarRental
                 {
                     string fileName = Path.GetFileName(fuNewImage.FileName);
                     // Tạo tên file duy nhất để tránh trùng
-                    string uniqueFileName = fileName;
-                    string savePath = Server.MapPath("~/Image/Vehicle/") + uniqueFileName;
+                    string uniqueFileName = DateTime.Now.Ticks.ToString() + "_" + fileName;
+                    string savePath = Server.MapPath("~/CarImages/") + uniqueFileName;
                     fuNewImage.SaveAs(savePath);
-                    imagePath = uniqueFileName;
+                    imagePath = "~/CarImages/" + uniqueFileName;
                 }
                 vehicle.Image = imagePath; // Đảm bảo DB có cột VehicleImage
 
@@ -146,7 +146,7 @@ namespace CarRental
                 TextBox txtNhienLieu = (TextBox)gvStaff.Rows[e.RowIndex].Cells[4].Controls[0]; // Cột 4 là Nhiên liệu
                 TextBox txtGia = (TextBox)gvStaff.Rows[e.RowIndex].Cells[5].Controls[0]; // Cột 5 là Giá
 
-                CheckBox ckbTrangThai = (CheckBox)gvStaff.Rows[e.RowIndex].FindControl("chkTrangThai");
+                //CheckBox ckbTrangThai = (CheckBox)gvStaff.Rows[e.RowIndex].FindControl("chkTrangThai");
                 FileUpload fuEditImg = (FileUpload)gvStaff.Rows[e.RowIndex].FindControl("fuEditImage");
 
                 var vehicle = db.Vehicles.SingleOrDefault(v => v.LicensePlate == bienSo);
@@ -157,16 +157,16 @@ namespace CarRental
                     vehicle.SeatingCapacity = int.Parse(txtChoNgoi.Text);
                     vehicle.FuelType = txtNhienLieu.Text;
                     vehicle.Price = int.Parse(txtGia.Text);
-                    vehicle.VehicleStatus = ckbTrangThai.Checked;
+                    //vehicle.VehicleStatus = ckbTrangThai.Checked;
 
                     // Xử lý cập nhật ảnh (chỉ đổi nếu người dùng chọn file mới)
                     if (fuEditImg.HasFile)
                     {
                         string fileName = Path.GetFileName(fuEditImg.FileName);
-                        string uniqueFileName = fileName;
-                        string savePath = Server.MapPath("~/Image/Vehicle/") + uniqueFileName;
+                        string uniqueFileName = DateTime.Now.Ticks.ToString() + "_" + fileName;
+                        string savePath = Server.MapPath("~/CarImages/") + uniqueFileName;
                         fuEditImg.SaveAs(savePath);
-                        vehicle.Image = uniqueFileName;
+                        vehicle.Image = "~/CarImages/" + uniqueFileName;
                     }
 
                     db.SubmitChanges();

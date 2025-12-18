@@ -69,8 +69,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminDashboard.aspx" />
+    <Content Include="Content\CustomerProfileStye.css" />
     <Content Include="Content\LoginPageStyle.css" />
     <Content Include="Content\SignUpPageStyle.css" />
+    <Content Include="Content\SiteLayout.css" />
+    <Content Include="Content\SiteStaffStyle.css" />
+    <Content Include="CustomerProfile.aspx" />
+    <Content Include="OrderManagement.aspx" />
+    <Content Include="StaffDashboard.aspx" />
+    <Content Include="VehicleList.aspx" />
     <Content Include="CustomerDashboard.aspx" />
     <Content Include="Image\Vehicle\FordRanger.jpg" />
     <Content Include="Image\Vehicle\HondaCity.jpg" />
@@ -82,8 +89,9 @@
     <Content Include="Image\Vehicle\VinFastVF5.jpg" />
     <Content Include="LoginPage.aspx" />
     <Content Include="SignUpPage.aspx" />
-    <Content Include="StaffDashboard.aspx" />
+    <Content Include="ViewVehicle.aspx" />
     <Content Include="Web.config" />
+    <Content Include="PaymentPage.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDashboard.aspx.cs">
@@ -92,6 +100,41 @@
     </Compile>
     <Compile Include="AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerProfile.aspx.cs">
+      <DependentUpon>CustomerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CustomerProfile.aspx.designer.cs">
+      <DependentUpon>CustomerProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrderManagement.aspx.cs">
+      <DependentUpon>OrderManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrderManagement.aspx.designer.cs">
+      <DependentUpon>OrderManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiteStaff.Master.cs">
+      <DependentUpon>SiteStaff.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteStaff.Master.designer.cs">
+      <DependentUpon>SiteStaff.Master</DependentUpon>
+    </Compile>
+    <Compile Include="StaffDashboard.aspx.cs">
+      <DependentUpon>StaffDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StaffDashboard.aspx.designer.cs">
+      <DependentUpon>StaffDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VehicleList.aspx.cs">
+      <DependentUpon>VehicleList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="VehicleList.aspx.designer.cs">
+      <DependentUpon>VehicleList.aspx</DependentUpon>
     </Compile>
     <Compile Include="CustomerDashboard.aspx.cs">
       <DependentUpon>CustomerDashboard.aspx</DependentUpon>
@@ -115,16 +158,32 @@
     <Compile Include="SignUpPage.aspx.designer.cs">
       <DependentUpon>SignUpPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="StaffDashboard.aspx.cs">
-      <DependentUpon>StaffDashboard.aspx</DependentUpon>
+    <Compile Include="SiteCustomer.Master.cs">
+      <DependentUpon>SiteCustomer.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="StaffDashboard.aspx.designer.cs">
-      <DependentUpon>StaffDashboard.aspx</DependentUpon>
+    <Compile Include="SiteCustomer.Master.designer.cs">
+      <DependentUpon>SiteCustomer.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewVehicle.aspx.cs">
+      <DependentUpon>ViewVehicle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewVehicle.aspx.designer.cs">
+      <DependentUpon>ViewVehicle.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentPage.aspx.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentPage.aspx.designer.cs">
+      <DependentUpon>PaymentPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="SiteCustomer.Master" />
+    <Content Include="SiteStaff.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
