@@ -26,11 +26,6 @@
             margin-bottom: 30px;
         }
 
-        .header h2 {
-            color: #333;
-            font-size: 24px;
-        }
-
         .header i {
             color: #666;
         }
@@ -40,7 +35,11 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
+        .container a {
+            font-size: 24px;
+            color: #666;
+            text-decoration: none;
+        }
         .layout {
             display: grid;
             grid-template-columns: 1fr 380px;
@@ -79,11 +78,10 @@
             color: #333;
         }
 
-        .customer-phone,
-        .customer-address {
+        .customer-info{
             color: #666;
             margin-bottom: 5px;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .btn-change {
@@ -239,6 +237,10 @@
             background: #c0392b;
         }
 
+        .btn-confirm:disabled {
+            background: #31ae66;
+        }
+
         .message {
             position: fixed;
             top: 100px;
@@ -275,7 +277,7 @@
         <!-- Header -->
         <div class="header">
             <div class="container">
-                <h2><i class="fas fa-car"></i>Cho thuê xe 3 con cá</h2>
+                <h2><a href="Home.aspx"> <i class="fas fa-car"></i> Cho thuê xe 3 con cá</a></h2>
             </div>
         </div>
 
@@ -291,17 +293,12 @@
                             Thông tin khách hàng
                         </div>
                         <div class="card-body">
-                            <div class="customer-name">
-                                <asp:Label ID="lblCustomerName" runat="server"></asp:Label>
-                            </div>
-                            <div class="customer-phone">
-                                <asp:Label ID="lblCustomerPhone" runat="server"></asp:Label>
-                            </div>
-                            <div class="customer-address">
-                                <asp:Label ID="lblCustomerAddress" runat="server"></asp:Label>
-                            </div>
-                            <div class="customer-id">
-                                <asp:Label ID="lblCustomerID" runat="server"></asp:Label>
+                            <div class="customer-info">
+                                <b>Họ & tên:</b> <asp:Label ID="lblCustomerName" runat="server"></asp:Label> <br />
+                                
+                                <b>Số điện thoại:</b> <asp:Label ID="lblCustomerPhone" runat="server"></asp:Label> <br />
+                                <b>Địa chỉ:</b> <asp:Label ID="lblCustomerAddress" runat="server"></asp:Label> <br />
+                                <b>Căn cước công dân:</b> <asp:Label ID="lblCustomerID" runat="server"></asp:Label> <br />
                             </div>
                             <asp:Button ID="btnChangeAddress" runat="server" Text="Thay Đổi" CssClass="btn-change" OnClick="btnChangeAddress_Click" />
                         </div>

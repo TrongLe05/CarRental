@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminDashboard.aspx" />
+    <Content Include="CarRentalHistory.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\CustomerProfileStye.css" />
     <Content Include="Content\LoginPageStyle.css" />
@@ -79,6 +80,7 @@
     <Content Include="Home.aspx" />
     <Content Include="OrderManagement.aspx" />
     <Content Include="StaffDashboard.aspx" />
+    <Content Include="TestAPI.aspx" />
     <Content Include="VehicleList.aspx" />
     <Content Include="CustomerDashboard.aspx" />
     <Content Include="Image\Vehicle\FordRanger.jpg" />
@@ -102,6 +104,13 @@
     </Compile>
     <Compile Include="AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CarRentalHistory.aspx.cs">
+      <DependentUpon>CarRentalHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarRentalHistory.aspx.designer.cs">
+      <DependentUpon>CarRentalHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -144,6 +153,13 @@
     </Compile>
     <Compile Include="StaffDashboard.aspx.designer.cs">
       <DependentUpon>StaffDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TestAPI.aspx.cs">
+      <DependentUpon>TestAPI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestAPI.aspx.designer.cs">
+      <DependentUpon>TestAPI.aspx</DependentUpon>
     </Compile>
     <Compile Include="VehicleList.aspx.cs">
       <DependentUpon>VehicleList.aspx</DependentUpon>

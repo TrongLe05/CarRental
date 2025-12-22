@@ -130,8 +130,8 @@ namespace CarRental
                 decimal total = subtotal + serviceFee + insuranceFee;
 
                 lblSubTotal.Text = string.Format("{0:N0} VNĐ", subtotal);
-                lblServiceFee.Text = string.Format("{0:N0} VNĐ", serviceFee);
-                lblInsuranceFee.Text = string.Format("{0:N0} VNĐ", insuranceFee);
+                //lblServiceFee.Text = string.Format("{0:N0} VNĐ", serviceFee);
+                //lblInsuranceFee.Text = string.Format("{0:N0} VNĐ", insuranceFee);
                 lblTotal.Text = string.Format("{0:N0} VNĐ", total);
 
                 Session["TotalPrice"] = total;
@@ -184,6 +184,8 @@ namespace CarRental
 
                     db.Orders.InsertOnSubmit(order);
                     db.SubmitChanges();
+                    btnConfirmPayment.Enabled = false;
+                    btnConfirmPayment.Text = "Đặt xe thành công!";
                     ShowMessage($"Đặt xe thành công! Mã đơn: {order.OrderID}", true);
                 }
                 catch (Exception ex)
@@ -199,7 +201,7 @@ namespace CarRental
 
         protected void btnChangeAddress_Click(object sender, EventArgs e)
         {
-            ShowMessage("Chức năng đang phát triển!", false);
+            Response.Redirect("CustomerProfile.aspx");
         }
 
         private int GetCustomerId(string username)

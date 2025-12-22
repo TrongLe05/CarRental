@@ -16,10 +16,13 @@ namespace CarRental
                 if (Session["Username"] != null)
                 {
                     lblUsername.Text = "Xin chào, " + Session["Username"];
+                    accountBox.Visible = true;
+                    btnLogin.Visible = false;
                 }
                 else
                 {
-                    Response.Redirect("~/LoginPage.aspx");
+                    accountBox.Visible = false;
+                    btnLogin.Visible = true;
                 }
             }
         }
@@ -27,8 +30,12 @@ namespace CarRental
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Clear();
-            Response.Redirect("~/LoginPage.aspx");
+            Response.Redirect("~/Home.aspx");
         }
 
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/LoginPage.aspx");
+        }
     }
 }

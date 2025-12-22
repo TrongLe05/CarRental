@@ -29,7 +29,7 @@
                 </nav>
 
                 <!-- Account -->
-                <div class="account">
+                <div class="account" runat="server" id="accountBox">
                     <div class="account-dropdown">
                         <!-- Trigger -->
                         <div class="account-trigger">
@@ -39,17 +39,22 @@
                         <!-- Dropdown menu -->
                         <div class="account-menu">
                             <a href="CustomerProfile.aspx">Tài khoản của tôi</a>
+                            <a href="CarRentalHistory.aspx">Lịch sử đặt xe</a>
                             <asp:LinkButton ID="btnLogout" runat="server" CssClass="logout" OnClick="btnLogout_Click">Đăng xuất</asp:LinkButton>
                         </div>
                     </div>
+                    
                 </div>
-
+                <asp:Button ID="btnLogin" CssClass="btn-login" runat="server" Text="Đăng nhập" OnClick="btnLogin_Click" Width="250" Height="35"/>
+                
+                                
             </div>
         </header>
 
         <!-- ===== MAIN CONTENT ===== -->
         <main class="main-site-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+           
         </main>
 
         <!-- ===== FOOTER ===== -->

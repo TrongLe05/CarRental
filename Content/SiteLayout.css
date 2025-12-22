@@ -5,20 +5,19 @@
 }
 
 body {
-    font-family: inherit;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     background: #f5f5f5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 
-/* Header */
+/* ===== HEADER ===== */
 .site-header {
-    background: #111827;
-    color: white;
+    background: #ffffff;
+    color: #1f2937;
     padding: 0 20px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     position: fixed;
     top: 0;
     left: 0;
@@ -30,71 +29,92 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     height: 70px;
 }
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    flex: 0 0 auto;
+    width: 250px;
 }
 
     .logo i {
         margin-right: 10px;
+        color: #ef4444;
     }
 
     .logo a {
-        color: #fff;
+        color: #1f2937;
         text-decoration: none;
+        transition: color 0.2s;
     }
 
         .logo a:hover {
-            text-decoration: none;
+            color: #ef4444;
         }
 
+/* Navigation Menu */
 .nav-menu {
+    flex: 1;
     display: flex;
-    gap: 30px;
+    justify-content: center;
+    gap: 40px;
 }
 
     .nav-menu a {
-        color: #d1d5db;
+        color: #6b7280;
         text-decoration: none;
-        font-size: 16px;
-        transition: color 0.3s;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 8px 0;
+        transition: color 0.2s;
+        position: relative;
     }
 
-        .nav-menu a:hover {
-            color: white;
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ef4444;
+            transition: width 0.3s;
         }
 
-/* Account */
+        .nav-menu a:hover {
+            color: #1f2937;
+        }
+
+            .nav-menu a:hover::after {
+                width: 100%;
+            }
+
+/* Login/Logout Buttons */
+.btn-login {
+    background: #ef4444;
+    border: none;
+    padding: 10px 24px;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-left: 55px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+    .btn-login:hover {
+        background: #dc2626;
+    }
+
+/* Account Section */
 .account {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #ffffff;
-}
-
-.btn-logout {
-    background-color: #ef4444;
-    border: none;
-    padding: 6px 12px;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-    .btn-logout:hover {
-        background-color: #dc2626;
-        border: none;
-        border-radius: 4px;
-    }
-
-.account {
-    position: relative;
 }
 
 .account-dropdown {
@@ -104,92 +124,117 @@ body {
 .account-trigger {
     cursor: pointer;
     font-weight: 500;
-    padding: 6px 10px;
+    padding: 12px 20px;
     border-radius: 6px;
+    color: #1f2937;
+    transition: background 0.2s;
 }
+
+    .account-trigger:hover {
+        background: #f3f4f6;
+    }
 
 .account-menu {
     position: absolute;
     right: 0;
-    top: 100%;
+    top: calc(100% + 2px);
     background: #fff;
-    min-width: 180px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    border-radius: 10px; /* bo góc dropdown */
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
     display: none;
-    overflow: hidden; /* QUAN TRỌNG để bo góc không bị tràn */
+    overflow: hidden;
     z-index: 999;
+    border: 1px solid #e5e7eb;
 }
-
 
     .account-menu a,
     .account-menu .logout {
         display: block;
-        padding: 12px 16px;
+        padding: 14px 20px;
         text-decoration: none;
-        color: #333;
+        color: #4b5563;
         background: white;
         border: none;
         width: 100%;
         text-align: left;
         cursor: pointer;
-        border-radius: 10px;
+        transition: background 0.2s;
+        font-size: 15px;
     }
 
         .account-menu a:hover,
         .account-menu .logout:hover {
-            background: #f3f4f6;
-            border-radius: 10px;
+            background: #f9fafb;
+            color: #ef4444;
         }
-
-
 
 .account-dropdown:hover .account-menu {
     display: block;
-    border-radius: 10px;
 }
 
+.btn-logout {
+    background: #ef4444;
+    border: none;
+    padding: 6px 12px;
+    color: white;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+    .btn-logout:hover {
+        background: #dc2626;
+    }
 
 .main-site-content {
-    margin-top: 70px;
     flex: 1;
-    padding: 0;
+    min-height: 100%;
+    padding-top: 70px;
 }
 
 /* ===== FOOTER ===== */
+footer {
+    margin-top: auto;
+}
 
 .site-footer {
-    background: #111827;
-    color: #d1d5db;
-    padding-top: 50px;
-    margin-top: 60px;
+    background: #ffffff;
+    color: #1f2937;
+    padding-top: 60px;
+    margin-top: 0;
+    border-top: 1px solid #e5e7eb;
 }
 
 .footer-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 20px 40px;
+    padding: 0 20px 50px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 40px;
+    gap: 50px;
 }
 
 .footer-col h3 {
-    color: #fff;
-    font-size: 22px;
-    margin-bottom: 15px;
+    color: #1f2937;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .footer-col h4 {
-    color: #fff;
-    font-size: 18px;
-    margin-bottom: 15px;
+    color: #1f2937;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .footer-col p {
     font-size: 14px;
-    line-height: 1.7;
-    color: #9ca3af;
+    line-height: 1.8;
+    color: #6b7280;
 }
 
 .footer-col ul {
@@ -197,29 +242,32 @@ body {
 }
 
     .footer-col ul li {
-        margin-bottom: 10px;
+        margin-bottom: 12px;
     }
 
         .footer-col ul li a {
-            color: #9ca3af;
+            color: #6b7280;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.2s;
+            font-size: 14px;
         }
 
             .footer-col ul li a:hover {
-                color: #ffffff;
+                color: #1f2937;
             }
 
 .footer-col i {
-    margin-right: 8px;
-    color: #60a5fa;
+    margin-right: 10px;
+    color: #ef4444;
+    font-size: 14px;
 }
 
-/* Bottom */
+/* Footer Bottom */
 .footer-bottom {
-    border-top: 1px solid #1f2937;
+    border-top: 1px solid #e5e7eb;
     text-align: center;
-    padding: 15px 20px;
+    padding: 25px 20px;
     font-size: 14px;
-    color: #9ca3af;
+    color: #6b7280;
+    background: #f9fafb;
 }

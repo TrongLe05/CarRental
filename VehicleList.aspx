@@ -3,6 +3,8 @@
 <asp:Content ContentPlaceHolderID="head" runat="server">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
     <style>
+        body {
+        }
         /* Main Content */
         .main-content {
             flex: 1;

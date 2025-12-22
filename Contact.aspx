@@ -6,99 +6,173 @@
     <style>
         /* ===== CONTACT PAGE ===== */
 
+        /* BANNER SECTION */
         .contact-banner {
-            background: #333;
+            background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.98) 100%), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80') center/cover;
             color: white;
-            padding: 80px 20px;
+            padding: 100px 20px 80px;
             text-align: center;
+            position: relative;
         }
 
             .contact-banner h1 {
-                font-size: 36px;
-                margin-bottom: 10px;
+                font-size: 42px;
+                font-weight: 700;
+                margin-bottom: 15px;
             }
 
             .contact-banner p {
-                color: #dbeafe;
-                font-size: 16px;
+                color: #d1d5db;
+                font-size: 18px;
+                font-weight: 400;
             }
 
-        /* CONTENT */
+        /* CONTENT SECTION */
         .contact-section {
-            padding: 70px 20px;
+            padding: 80px 20px;
+            background: #f9fafb;
         }
 
         .contact-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
+            grid-template-columns: 1fr 1.5fr;
             gap: 50px;
+            align-items: start;
         }
 
-        .contact-info h2,
-        .contact-form h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .contact-info p {
-            margin-bottom: 14px;
-            font-size: 16px;
-            color: #374151;
-        }
-
-        .contact-info i {
-            color: #2563eb;
-            margin-right: 10px;
-        }
-
-        /* FORM */
-        .contact-form {
+        /* CONTACT INFO */
+        .contact-info {
             background: white;
             padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #f3f4f6;
         }
+
+            .contact-info h2 {
+                margin-bottom: 30px;
+                font-size: 24px;
+                font-weight: 700;
+                color: #1f2937;
+            }
+
+            .contact-info p {
+                margin-bottom: 20px;
+                font-size: 16px;
+                color: #4b5563;
+                display: flex;
+                align-items: center;
+                padding: 12px;
+                border-radius: 8px;
+                transition: all 0.2s;
+            }
+
+                .contact-info p:hover {
+                    background: #f9fafb;
+                    transform: translateX(5px);
+                }
+
+            .contact-info i {
+                color: #ef4444;
+                margin-right: 15px;
+                font-size: 18px;
+                width: 24px;
+                text-align: center;
+            }
+
+        /* CONTACT FORM */
+        .contact-form {
+            background: white;
+            padding: 50px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #f3f4f6;
+        }
+
+            .contact-form h2 {
+                margin-bottom: 30px;
+                font-size: 24px;
+                font-weight: 700;
+                color: #1f2937;
+            }
 
         .contact-input {
             width: 100%;
-            padding: 14px 16px;
-            margin-bottom: 16px;
-            border-radius: 10px;
-            border: 1px solid #d1d5db;
+            padding: 16px 18px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
             font-size: 15px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            transition: all 0.3s;
+            background: #f9fafb;
         }
 
             .contact-input:focus {
                 outline: none;
-                border-color: #2563eb;
+                border-color: #ef4444;
+                background: white;
+                box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+            }
+
+            .contact-input::placeholder {
+                color: #9ca3af;
             }
 
             .contact-input.textarea {
-                height: 140px;
-                resize: none;
+                height: 160px;
+                resize: vertical;
+                min-height: 120px;
+                max-height: 300px;
             }
 
         .btn-primary {
-            background: #2563eb;
+            background: #ef4444;
             color: white;
             border: none;
-            padding: 10px 24px;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 500;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s ease;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+            width: 100%;
         }
 
             .btn-primary:hover {
-                background: #1d4ed8;
+                background: #dc2626;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
             }
+
+            .btn-primary:active {
+                transform: translateY(0);
+            }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .contact-banner h1 {
+                font-size: 32px;
+            }
+
+            .contact-banner p {
+                font-size: 16px;
+            }
+
             .contact-container {
                 grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+
+            .contact-info {
+                padding: 30px;
             }
         }
     </style>

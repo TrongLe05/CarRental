@@ -6,173 +6,283 @@
     <style>
         /* ===== HOME PAGE ===== */
 
+        /* HERO SECTION */
         .home-hero {
-            background: #333;
+            background: linear-gradient(rgba(31, 41, 55, 0.7))
+                ,url('/Image/Home/HeroBackground.png') center/cover;
             color: white;
-            padding: 100px 20px;
+            padding: 120px 20px 100px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 50 Q 25 25, 50 50 T 100 50" stroke="rgba(239,68,68,0.1)" fill="none" stroke-width="2"/></svg>');
+            opacity: 0.3;
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
             .hero-content h1 {
-                font-size: 42px;
+                font-size: 48px;
+                font-weight: 700;
                 margin-bottom: 20px;
+                line-height: 1.2;
             }
 
             .hero-content p {
-                font-size: 18px;
+                font-size: 20px;
                 color: #d1d5db;
-                margin-bottom: 30px;
+                margin-bottom: 35px;
+                font-weight: 400;
             }
 
         .btn-primary {
-            background: #2563eb;
+            display: inline-block;
+            background: #ef4444;
             color: white;
-            padding: 14px 30px;
-            border-radius: 10px;
+            padding: 16px 40px;
+            border-radius: 8px;
             text-decoration: none;
             font-size: 16px;
-            transition: background 0.3s;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
         }
 
             .btn-primary:hover {
-                background: #1d4ed8;
+                background: #dc2626;
+                transform: translateY(-2px);
+                box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
             }
 
-        /* FEATURES */
+        /* FEATURES SECTION */
         .home-features {
             max-width: 1200px;
-            margin: 60px auto;
+            margin: 80px auto;
             padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
 
         .feature {
             background: white;
-            padding: 30px;
-            border-radius: 16px;
+            padding: 40px 30px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            border: 1px solid #f3f4f6;
         }
 
+            .feature:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+                border-color: #ef4444;
+            }
+
             .feature i {
-                font-size: 36px;
-                color: #2563eb;
-                margin-bottom: 15px;
+                font-size: 48px;
+                color: #ef4444;
+                margin-bottom: 20px;
+                transition: transform 0.3s;
+            }
+
+            .feature:hover i {
+                transform: scale(1.1);
             }
 
             .feature h3 {
-                margin-bottom: 10px;
+                margin-bottom: 12px;
                 font-size: 20px;
+                font-weight: 600;
+                color: #1f2937;
             }
 
             .feature p {
                 color: #6b7280;
                 font-size: 15px;
+                line-height: 1.6;
             }
-        /* ===== POPULAR VEHICLES ===== */
 
+        /* POPULAR VEHICLES SECTION */
         .home-vehicles {
             background: #f9fafb;
-            padding: 70px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
 
             .home-vehicles h2 {
-                font-size: 32px;
-                margin-bottom: 40px;
+                font-size: 36px;
+                font-weight: 700;
+                margin-bottom: 50px;
+                color: #1f2937;
             }
 
         .vehicle-list {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
         .vehicle-card {
             background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            overflow: hidden;
+            border: 1px solid #f3f4f6;
         }
+
+            .vehicle-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+            }
+
+            .vehicle-card .img-container {
+                width: 100%;
+                height: 200px;
+                overflow: hidden;
+                background: #f3f4f6;
+            }
 
             .vehicle-card img {
                 width: 100%;
-                min-height: 60%;
-                border-radius: 12px;
-                margin-bottom: 15px;
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.3s;
             }
+
+            .vehicle-card:hover img {
+                transform: scale(1.05);
+            }
+
             .vehicle-card h4 {
-                font-size: 18px;
-                margin-bottom: 10px;
+                font-size: 20px;
+                font-weight: 600;
+                margin: 20px 20px 10px;
+                color: #1f2937;
             }
 
             .vehicle-card p {
                 color: #6b7280;
-                margin-bottom: 15px;
+                margin: 0 20px 20px;
+                font-size: 15px;
             }
+
+                .vehicle-card p strong {
+                    color: #ef4444;
+                    font-size: 18px;
+                }
 
         .btn-outline {
             display: inline-block;
-            padding: 10px 24px;
-            border-radius: 10px;
-            border: 1px solid #2563eb;
-            color: #2563eb;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: 2px solid #ef4444;
+            color: #ef4444;
             text-decoration: none;
             transition: all 0.3s;
+            font-weight: 600;
+            margin: 0 20px 25px;
         }
 
             .btn-outline:hover {
-                background: #2563eb;
+                background: #ef4444;
                 color: white;
             }
 
-        /* ===== PROCESS ===== */
-
+        /* PROCESS SECTION */
         .home-process {
-            padding: 70px 20px;
+            padding: 80px 20px;
             text-align: center;
+            background: white;
         }
 
             .home-process h2 {
-                font-size: 32px;
-                margin-bottom: 40px;
+                font-size: 36px;
+                font-weight: 700;
+                margin-bottom: 50px;
+                color: #1f2937;
             }
 
         .process-list {
             max-width: 1000px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
         }
 
         .process-step {
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            background: #f9fafb;
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
+
+            .process-step:hover {
+                border-color: #ef4444;
+                background: white;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            }
 
             .process-step span {
                 display: inline-block;
-                width: 44px;
-                height: 44px;
-                line-height: 44px;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
                 border-radius: 50%;
-                background: #2563eb;
+                background: #ef4444;
                 color: white;
-                font-weight: bold;
-                margin-bottom: 15px;
+                font-weight: 700;
+                font-size: 24px;
+                margin-bottom: 20px;
+                transition: transform 0.3s;
             }
+
+            .process-step:hover span {
+                transform: scale(1.1);
+            }
+
+            .process-step p {
+                font-size: 16px;
+                color: #1f2937;
+                font-weight: 500;
+            }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .home-vehicles h2,
+            .home-process h2 {
+                font-size: 28px;
+            }
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
