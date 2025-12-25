@@ -70,12 +70,25 @@ namespace CarRental
         }
         private bool ValidateInputs()
         {
-            return !string.IsNullOrWhiteSpace(txtFullname.Text) &&
-                   !string.IsNullOrWhiteSpace(txtAddress.Text) &&
-                   !string.IsNullOrWhiteSpace(txtCustomerCCCD.Text) &&
-                   !string.IsNullOrWhiteSpace(txtPhone.Text) &&
-                   !string.IsNullOrWhiteSpace(txtBirthDate.Text) &&
-                   ddlSex.SelectedIndex > 0;
+            if (string.IsNullOrWhiteSpace(txtFullname.Text) ||
+                   string.IsNullOrWhiteSpace(txtAddress.Text) ||
+                   string.IsNullOrWhiteSpace(txtCustomerCCCD.Text) ||
+                   string.IsNullOrWhiteSpace(txtPhone.Text) ||
+                   string.IsNullOrWhiteSpace(txtBirthDate.Text) ||
+                   ddlSex.SelectedIndex < 1)
+            {
+                lblMassage.Text = "Vui lòng nhập đầy đủ thông tin!";
+                return false;
+            }
+
+            string phone = txtPhone.Text.Trim();
+            if (phone.Length != 10 || !phone.All(char.IsDigit))
+            {
+                lblMassage.Text = "Số điện thoại phải gồm đúng 10 chữ số!";
+                return false;
+            }
+
+            return true;
         }
         private void UpdateCustomerInfo(Customer customer)
         {
@@ -106,7 +119,6 @@ namespace CarRental
 
                 if (!ValidateInputs())
                 {
-                    lblMassage.Text = "Vui lòng nhập đầy đủ thông tin!";
                     return;
                 }
 

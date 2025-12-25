@@ -83,15 +83,21 @@ namespace CarRental
                 // Nếu ID tự tăng thì không cần dòng này, nếu không thì giữ nguyên
                 vehicle.VehicleID = (db.Vehicles.Any()) ? db.Vehicles.Max(v => v.VehicleID) + 1 : 1;
 
+                int seat = int.Parse(txtNewSeating.Text);
+                if (!(seat == 4 || seat == 7 || seat == 16))
+                {
+                    lblMessage.Text = "Số chỗ ngồi chỉ được phép là 4, 7 hoặc 16!";
+                    return;
+                }
                 vehicle.LicensePlate = txtNewLicensePlate.Text.Trim();
                 vehicle.NameVehicle = txtNewNameVehicle.Text.Trim();
-                vehicle.SeatingCapacity = int.Parse(txtNewSeating.Text);
+                vehicle.SeatingCapacity = seat;
                 vehicle.Price = int.Parse(txtNewPrice.Text);
                 vehicle.FuelType = ddlFuelType.SelectedValue;
                 vehicle.VehicleStatus = false; // Mặc định là Chưa thuê (false)
 
                 // Xử lý Upload Ảnh
-                string imagePath = "~/Image/No_Image_Available.jpg"; // Ảnh mặc định nếu không up
+                string imagePath = "No_Image_Available.jpg"; // Ảnh mặc định nếu không up
                 if (fuNewImage.HasFile)
                 {
                     string fileName = Path.GetFileName(fuNewImage.FileName);

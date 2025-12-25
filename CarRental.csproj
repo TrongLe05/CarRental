@@ -82,7 +82,6 @@
     <Content Include="OrderManagement.aspx" />
     <Content Include="Statistics.aspx" />
     <Content Include="VehicleManagement.aspx" />
-    <Content Include="TestAPI.aspx" />
     <Content Include="VehicleList.aspx" />
     <Content Include="CustomerDashboard.aspx" />
     <Content Include="Image\Vehicle\FordRanger.jpg" />
@@ -95,7 +94,6 @@
     <Content Include="Image\Vehicle\VinFastVF5.jpg" />
     <Content Include="LoginPage.aspx" />
     <Content Include="SignUpPage.aspx" />
-    <Content Include="ViewVehicle.aspx" />
     <Content Include="Web.config" />
     <Content Include="PaymentPage.aspx" />
   </ItemGroup>
@@ -163,13 +161,6 @@
     <Compile Include="VehicleManagement.aspx.designer.cs">
       <DependentUpon>VehicleManagement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="TestAPI.aspx.cs">
-      <DependentUpon>TestAPI.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="TestAPI.aspx.designer.cs">
-      <DependentUpon>TestAPI.aspx</DependentUpon>
-    </Compile>
     <Compile Include="VehicleList.aspx.cs">
       <DependentUpon>VehicleList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -205,13 +196,6 @@
     </Compile>
     <Compile Include="SiteCustomer.Master.designer.cs">
       <DependentUpon>SiteCustomer.Master</DependentUpon>
-    </Compile>
-    <Compile Include="ViewVehicle.aspx.cs">
-      <DependentUpon>ViewVehicle.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ViewVehicle.aspx.designer.cs">
-      <DependentUpon>ViewVehicle.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaymentPage.aspx.cs">
       <DependentUpon>PaymentPage.aspx</DependentUpon>
